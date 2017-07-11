@@ -1,0 +1,12 @@
+# =====================================
+# Color
+#
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'cocopon/lightline-hybrid.vim'
+depends = ['lightline.vim', 'vim-hybrid.vim']
+hook_source = '''
+source $XDG_CONFIG_HOME/dein/rc/color.rc.vim
+'''

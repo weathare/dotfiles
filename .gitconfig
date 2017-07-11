@@ -1,0 +1,109 @@
+[include]
+  path = ~/.git.local
+[core]
+  excludesfile = ~/.gitignore
+  editor = nvim
+[merge]
+  tool = vimdiff
+[mergetool]
+  prompt = true
+[mergetool "vimdiff"]
+# ref: https://github.com/neovim/neovim/issues/2377#issuecomment-126092442
+  path = nvim
+[diff]
+  tool = vimdiff
+  compactionHeuristic = true
+[difftool]
+  prompt = false
+[difftool "vimdiff"]
+  path = nvim
+[interactive]
+  diffFilter = diff-highlight
+[alias]
+  aliases = !git config --get-regexp alias | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\t\\1\\\t => \\2/' | sort
+  me = !git config --get-regexp user
+  p = push
+  st = status --short --branch -u
+  sh = show
+  so = remote show origin
+  ft = fetch --all
+  pl = !git pull --all && git refresh
+  up = pull --rebase
+  rb = rebase
+  rbi = rebase -i
+  ad = add
+  as = !git add -A && git status --short --branch
+  ca = commit -a -m
+  cm = commit -m
+  cv = commit -v
+  wip = "!f () { git add -A . && git commit -m \"WIP $1\"; }; f"
+  co = checkout
+# for branch
+  br = branch
+  ba = branch -a          # originも含めたすべてのbranchを表示
+  bn = branch --no-merge  # mergeしてないbranchを
+  refresh = !git fetch -p origin && git remote prune origin  # リモートブランチの同期
+  bp = pull --prune
+# for log
+  ls = log --stat         # logに変更されたファイルも一緒に出す
+  lp = log -p             # diffも一緒に出す
+  lr = log origin
+  lo = log --pretty=oneline --stat # logに変更されたファイルも一緒に出す
+  la = log --color --pretty=format:'%C(green)%ad%Creset %C(red)%h%Creset %C(cyan)<%an>%Creset: %s' --date=short  # ざっくりログ出す
+  lg = log --graph --all --date=short --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset'
+  # copy-reflog = !"git reflog --pretty='%h %gd %gs %an %ar' --color | fzf | awk -F ' ' '{ print $1, $2}'"
+  copy-reflog = !git reflog --color --pretty=format:'%C(red)%h%Creset %gd -%C(yellow)%d%Creset %s %C(green)(%cr) %C(cyan)<%an>%Creset' | fzf | awk -F ' ' '{ print $1, $2}'
+# for diff
+  dm = diff master        # masterとのdiff
+  dw = diff --color-words # wordごとに色つきdiff
+  dc = diff --cached      # addされているものとdiff
+  d1 = diff HEAD~
+  d2 = diff HEAD~~
+  d3 = diff HEAD~~~
+  d4 = diff HEAD~~~~
+  d5 = diff HEAD~~~~~
+  d10 = diff HEAD^10
+# for reset
+  cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
+  reset1 = reset HEAD~ --soft
+  reset2 = reset HEAD~~ --soft
+  reset3 = reset HEAD~~~ --soft
+  reset4 = reset HEAD~~~~ --soft
+  reset5 = reset HEAD~~~~~ --soft
+  reset10 = reset HEAD^10 --soft
+# for merge
+  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+  add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+  del-merged = !git branch --merged origin/master | grep -v '^\\s*master|develop' | grep -v '^*' | xargs --no-run-if-empty git branch -d
+# for grep
+  gr = grep
+  gn = grep -n
+  su = stash -u
+# hub alias
+  pr = !hub pull-request
+  pri = "!f() { hub pull-request -i $1 ; }; f"
+  ppr = "!f() { git push origin $1 && hub pull-request ; }; f"
+  open-list = !hub issue
+# subtree
+  subtree-remote= "!f() { git remote add tree/$1 $2 ;}: f"
+  subtree-add = "!f() { git subtree add --prefix=$1 tree/$1 $2 ; }; f"
+  subtree-push = "!f() { git subtree puth --prefix=$1 tree/$1 $2 ; }; f"
+  subtree-force-push = "!f() { git push tree/$1 `git subtree split --prefix=$1 .`:$2 --force ; }; f"
+  subtree-pull = "!f() { git subtree pull --prefix=$1 tree/$1 $2 ; }; f"
+[color]
+  ui = auto
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+[credential]
+# helper = cache --timeout=300
+[push]
+  default = matching
+[credential]
+  helper = store
+[http]
+  sslVerify = false
+[ghq]
+  root = ~/workspace/src

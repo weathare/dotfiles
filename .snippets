@@ -1,0 +1,113 @@
+cd                     # enhancd::run
+mcd                    # mkdir -p $1 && cd $1
+md                     # mkdir -p
+rm                     # rm -i
+grep                   # grep --color
+
+gti                                             # alias git
+git push origin :<remote_branch>                # delete remote branch
+fad                                             # git add | fzf
+fdel-branch                                     # git branch --merged master
+fco                                             # git tag | git branch --all | fzf | git checkout $target
+fshow                                           # git log master..$current_branch | fzf
+git reset HEAD <files>                          # reset add files
+git commit --allow-empty -m "make pull-request" # git empty commit with comment
+find . -name '*.orig' -type f | xargs rm -rf    # remove git backup-files
+git ls-files -o --exclude-standard | xargs rm   # remove git unstage-files
+
+# control go(git) package
+fcd                    # gch -l | fzf
+frepo                  # ghq lis | fzf && cd $GHQ_ROOT/$target
+ghq-update             # ghq list | sed | xargs ghq get -u
+
+# apt
+sudo apt-get install -y `apt-cache search . | fzf -m | awk -v ORS=' ' '{print $1}; END{print "\n"}'` # install
+sudo apt-get purge -y `dpkg -l | fzf -m | awk -v ORS=' ' '{print $2}; END{print "\n"}'`              # remove
+apt-cache search . | fzf                                                                             # display installable package
+apt-cache policy `apt-cache search . | fzf | awk '{print $1}'`                                       # display installable version
+dpkg -L `dpkg -l | fzf | awk '{print $2}'` | more                                                    # display installed package
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get autoremove && sudo apt-get clean
+
+# linuxbrew
+brew cleanup -s        # remove brew cache
+
+# directory
+l                      # ls -CF
+la                     # ls -A
+ll                     # ls -lFh
+lla                    # ls ls -alh
+ls                     # ls --color=auto
+cls                    # clear && ls -F
+
+# make
+m                      # make
+make                   # clear && make
+smi                    # sudo make install
+
+# system
+off                    # sudo shutdown -h now
+reboot                 # sudo shutdown -r now
+reload                 # source ~/.bashrc
+h                      # history
+keys                   # ssh-add -l
+extract                # enhance unpack archived files.
+date +%Y%m%d
+date +%Y%m%d%H%M%S
+date +%Y-%m-%dT%T%:z
+
+# searach
+sudo lsof -i:80,3000,8000,8080,5432,6379 | grep LISTEN
+sudo lsof -c ruby
+
+# resource
+dstat -Tclmdrn         # dstat full
+dstat -Tclm            # dstat memory
+dstat -Tclr            # dstat cpu
+dstat -Tclnd           # dstat net
+dstat -Tcldr           # dstat disk
+
+# ps
+peco-kill              # ps aux | awk '{print $2}' | kill $pid
+psg                    # ps auwwx | grep $1
+
+# development
+rbenv install -l | grep -v - | tail -1                                       # newer installable ruby version
+pyenv install -l | grep -v - | tail -1                                       # newer installable python version
+pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip2 install -U # update python2 packages
+pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install -U # update python3 packages
+pip freeze > .requirement                                                    # output pip installed package list
+pip install -r .requirement                                                  # install pip package from list
+ndenv install -l | grep -v - | tail -1                                       # newer installable nodejs version
+npm list -g            # nodejs global package list
+npm update -g          # update nodejs global packages
+npm config ls -l       # nodejs default configs
+
+# tmux
+tmux                   # tmux -2
+tmux new -s            # tmux session start
+tmux a -t              # tmux session attach
+
+# tmux plugin keymap
+prefix + <Ctrl-s>       # tmuxセッション状態保存
+prefix + <Ctrl-r>       # tmuxセッション状態復元
+prefix + <Shift-p>      # tmuxカレントペインのロギング開始/終了
+prefix + <Alt-p>        # tmuxカレントペインのテキストキャプチャ取得
+prefix + <Alt-Shift-p>  # tmuxカレントペインの出力履歴全て取得
+prefix + <Alt-c>        # tmuxカレントペインの出力履歴をクリア
+prefix + <Shift-i>      # tmuxプラグインインストール
+prefix + <Shift-u>      # tmuxプラグインアップデート
+prefix + <Shift-l>      # tmuxカレントパネルを右方向にリサイズ
+prefix + <Shift-h>      # tmuxカレントパネルを左方向にリサイズ
+prefix + <Shift-k>      # tmuxカレントパネルを上方向にリサイズ
+prefix + <Shift-j>      # tmuxカレントパネルを下方向にリサイズ
+prefix + ,              # ウィンドウ名変更
+
+# edit
+vi                     # nvim
+less                   # /.linuxbrew/share/nvim/runtime/macros/less.sh
+
+# postgresql
+psql -U postgres -h localhost
+psql -l -U postgres -h localhost
+pgcli -h localhost -p 5432 -U <user> <db>
