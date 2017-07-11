@@ -25,6 +25,8 @@ tags
 /.config/dein/cache*
 /.config/dein/.cache
 /.config/dein/repos
+/.config/dein/state_nvim.vim
+/.config/dein/state_vi.vim
 /coverage/
 /InstalledFiles
 /pkg/
