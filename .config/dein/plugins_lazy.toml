@@ -165,6 +165,7 @@ autocmd BufNewFile,BufRead *.haml setlocal filetype=haml
 
 [[plugins]]
 repo = 'AtsushiM/sass-compile.vim'
+if = 'has("sass")'
 on_ft = 'css'
 depends = 'search-parent.vim'
 hook_add = '''
