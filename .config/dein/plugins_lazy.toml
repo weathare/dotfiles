@@ -121,6 +121,9 @@ nnoremap <Leader>st :SyntasticToggleMode<CR>
 repo = 'vim-ruby/vim-ruby'
 depends = 'unite.vim'
 on_ft = 'ruby'
+hook_add = '''
+autocmd BufNewFile,BufRead *.haco setlocal filetype=ruby
+'''
 
 [[plugins]]
 repo = 'itmammoth/run-rspec.vim'
