@@ -10,13 +10,13 @@ if ! shopt -oq posix; then
 fi
 
 # completion
-if [ -d "$HOME/.linuxbrew/etc/bash_completion.d" ] ; then
-  source "$HOME/.linuxbrew/etc/bash_completion.d/git-completion.bash"
-  source "$HOME/.linuxbrew/etc/bash_completion.d/git-prompt.sh"
-  source "$HOME/.linuxbrew/etc/bash_completion.d/hub.bash_completion.sh"
-  source "$HOME/.linuxbrew/etc/bash_completion.d/tmux"
+if [ -d "$(brew --repo)/etc" ] ; then
+  _BREW_ETC="$(brew --repo)/etc"
+  for f in $(find $_BREW_ETC/bash_completion.d -type l); do
+    source $f
+  done
   POH='ヾ(｡﹏｡)ﾉﾞ'
-  if [ -r "$HOME/.linuxbrew/etc/bash_completion.d/git-completion.bash" ] ; then
+  if [ -r "$_BREW_ETC/bash_completion.d/git-completion.bash" ] ; then
     PS1='\[\033[0;38;5;111m\]\u@\h\[\033[0;38;5;6m\] \w$(__git_ps1 " (%s)") \n\[\033[00m\]$POH \$ '
   else
     PS1="\[\033[0;38;5;111m\]\u@\h\[\033[0;38;5;6m\] \w \n$POH \$ "
@@ -24,7 +24,10 @@ if [ -d "$HOME/.linuxbrew/etc/bash_completion.d" ] ; then
 fi
 
 # ls color
-# ref: https://github.com/seebi/dircolors-solarized
+if [ ! -f "$HOME/bin/dircolors" ]; then
+  git clone https://github.com/arcticicestudio/nord-dircolors.git $HOME/bin/nord-dircolors
+  ln -nfs $HOME/bin/nord-dircolors/src/dir_colors $HOME/bin/dircolors
+fi
 if [ -f "$HOME/bin/dircolors" ]; then
   if type dircolors > /dev/null 2>&1; then
     eval $(dircolors "$HOME/bin/dircolors")
