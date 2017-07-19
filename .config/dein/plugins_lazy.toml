@@ -196,6 +196,10 @@ repo = 'millermedeiros/vim-esformatter'
 on_ft = ['javascript', 'javascript.jsx']
 
 [[plugins]]
+repo = 'ekalinin/Dockerfile.vim'
+on_ft = ['Dockerfile']
+
+[[plugins]]
 repo ='Shougo/neco-vim'
 on_ft = 'vim'
 
