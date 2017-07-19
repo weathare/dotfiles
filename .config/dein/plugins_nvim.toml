@@ -34,6 +34,13 @@ hook_post_source = '''
 source $XDG_CONFIG_HOME/dein/rc/denite.rc.vim
 '''
 
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
+hook_source = '''
+source $XDG_CONFIG_HOME/dein/rc/vimfiler.rc.vim
+'''
+
 # =====================================
 # Utility
 #
