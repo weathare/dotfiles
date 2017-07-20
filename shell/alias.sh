@@ -13,7 +13,7 @@ alias h='history'
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 # alias less='~/.linuxbrew/share/nvim/runtime/macros/less.sh'
 alias tmux='tmux -2'
-#alias vi='nvim'
+alias vn='nvim'
 alias gti='git'
 
 # This one is to take care of make
