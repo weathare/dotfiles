@@ -13,3 +13,4 @@ source $SHELL_FILES/default.sh
 source $SHELL_FILES/export.sh
 source $SHELL_FILES/function.sh
 source $SHELL_FILES/prompt.sh
+[ -f $SHELL_FILES/export.local.sh ]; source $SHELL_FILES/export.local.sh
