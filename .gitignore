@@ -54,3 +54,4 @@ build-iPhoneSimulator/
 .config/fillin
 .config/hub
 /.config/pgcli
+shell/export.local.sh
