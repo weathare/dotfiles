@@ -37,7 +37,7 @@ alias mcd='mcd'
 # ghq + fzf: ghq管理のパスを探索
 frepo() {
   local dir
-  dir=$(ghq list | fzf-tmux --reverse) && cd $(ghq root)/$dir
+  dir=$(ghq list | fzf-tmux --reverse) && cd $(ghq root)/$dir && git config --local --list | grep user
 }
 alias frepo='frepo'
 
@@ -107,7 +107,7 @@ fpr() {
     git branch --merged | grep -v master |
     fzf-tmux -d --sort --ansi |
     sed "s/.* //") || return
-  git push origin $target && hub pull-request
+  git push -u origin $target && hub pull-request
 }
 alias fpr='fpr'
 
