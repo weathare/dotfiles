@@ -4,6 +4,6 @@ endif
 
 let g:slack_memo_bot_username = 'weathare'
 let g:slack_memo_bot_icon_emoji = ':vim:'
-nnoremap sme :split enew<cr>:resize -20<cr>:set ft=markdown<cr>gI
+nnoremap sme :16split enew<cr>:set ft=markdown<cr>gI
 nnoremap smp :SlackMemoPost<cr>
 nnoremap sml :SlackMemoList<cr>:set modifiable<cr>
