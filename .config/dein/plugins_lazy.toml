@@ -196,8 +196,8 @@ repo = 'millermedeiros/vim-esformatter'
 on_ft = ['javascript', 'javascript.jsx']
 
 [[plugins]]
-repo = 'ekalinin/Dockerfile.vim'
-on_ft = ['Dockerfile']
+repo = 'honza/dockerfile.vim'
+on_ft = ['dockerfile']
 
 [[plugins]]
 repo ='Shougo/neco-vim'
@@ -221,5 +221,6 @@ on_ft = [
   'javascript',
   'css',
   'scss',
-  'sass'
+  'sass',
+  'dockerfile'
 ]
