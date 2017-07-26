@@ -32,8 +32,7 @@
   rb = rebase
   rbi = rebase -i
   ad = add
-  as = !git add -A && git status --short --branch
-  ca = commit -a -m
+  ca = commit -A -m
   cm = commit -m
   cv = commit -v
   wip = "!f () { git add -A . && git commit -m \"WIP $1\"; }; f"
@@ -44,6 +43,7 @@
   bn = branch --no-merge  # mergeしてないbranchを
   refresh = !git fetch -p origin && git remote prune origin  # リモートブランチの同期
   bp = pull --prune
+  bd = branch -D          # force delete
 # for log
   ls = log --stat         # logに変更されたファイルも一緒に出す
   lp = log -p             # diffも一緒に出す

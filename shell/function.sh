@@ -72,9 +72,14 @@ frevert() {
 alias frev='frevert'
 
 fdel() {
-  local current branches
+  local current branches target
   current=$(git rev-parse --abbrev-ref HEAD)
-  branches=$(git branch --merged master | grep -vE '^\*|master$|"$current"$' | fzf-tmux --multi)
+  if [[ $current != 'master' ]]; then
+    target=$current
+  else
+    target='master'
+  fi
+  branches=$(git branch --merged $target | grep -vE '^\*|master$|"$current"$' | fzf-tmux --multi)
   if [[ -n $branches ]]; then
     git branch -d $branches
   else
