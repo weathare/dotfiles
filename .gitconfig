@@ -32,7 +32,7 @@
   rb = rebase
   rbi = rebase -i
   ad = add
-  ca = commit -A -m
+  ca = !git add -A . && git commit -m
   cm = commit -m
   cv = commit -v
   wip = "!f () { git add -A . && git commit -m \"WIP $1\"; }; f"
