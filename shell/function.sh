@@ -37,7 +37,7 @@ alias mcd='mcd'
 # ghq + fzf: ghq管理のパスを探索
 frepo() {
   local dir
-  dir=$(ghq list | fzf-tmux --reverse) && cd $(ghq root)/$dir && git config --local --list | grep user
+  dir=$(ghq list | fzf-tmux --reverse) && cd $(ghq root)/$dir && git config --get-regexp user
 }
 alias frepo='frepo'
 

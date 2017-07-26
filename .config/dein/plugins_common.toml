@@ -66,6 +66,7 @@ map <silent>sr <Plug>(operator-surround-replace)
 [[plugins]]
 repo = 'tyru/caw.vim.git'
 hook_add = '''
+autocmd BufNewFile,BufRead .snippets setlocal filetype=ruby
 nmap  <C-_> <Plug>(caw:hatpos:toggle)
 vmap  <C-_> <plug>(caw:hatpos:toggle)
 '''

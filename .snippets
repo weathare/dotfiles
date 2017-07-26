@@ -42,6 +42,7 @@ cls                    # clear && ls -F
 ln -nfs                # overwrite symbolic link
 tree -h                # show directory tree & file size
 tree -pug              # show directory tree & permission, user
+tree -I ".git|vendor|node_modules" -L 3 # tree で指定のディレクトリを除外 & 階層を指定
 
 # make
 m                      # make
@@ -110,7 +111,7 @@ prefix + ,              # ウィンドウ名変更
 
 # edit
 nv                     # nvim
-less                   # /.linuxbrew/share/nvim/runtime/macros/less.sh
+less -R +F             # `tail -f` like view & escape ascii color
 
 # postgresql
 psql -U postgres -h localhost
