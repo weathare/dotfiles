@@ -77,6 +77,7 @@ psg                    # ps auwwx | grep $1
 
 # development
 rbenv install -l | grep -v - | tail -1                                       # newer installable ruby version
+rbenv update-rubies                                                          # update specific version
 pyenv install -l | grep -v - | tail -1                                       # newer installable python version
 pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip2 install -U # update python2 packages
 pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install -U # update python3 packages
