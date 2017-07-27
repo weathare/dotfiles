@@ -44,6 +44,11 @@ tree -h                # show directory tree & file size
 tree -pug              # show directory tree & permission, user
 tree -I ".git|vendor|node_modules" -L 3 # tree で指定のディレクトリを除外 & 階層を指定
 
+# file
+awk '!a[$0]++'         # ソートせずに重複削除
+sort -t "," -k1rn -u   # -t: 区切り文字指定, -k: 区切った列番号, -r: 逆順に, -n: 数値扱い, -f: ignore-case, -u: 出力先を指定
+
+
 # make
 m                      # make
 make                   # clear && make
