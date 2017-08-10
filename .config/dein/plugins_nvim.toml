@@ -18,9 +18,9 @@ source $XDG_CONFIG_HOME/dein/rc/color.rc.vim
 repo = 'junegunn/fzf'
 depends = 'fzf'
 # [todo]:
-# hook_source = '''
-# source $XDG_CONFIG_HOME/dein/rc/fzf.rc.vim
-# '''
+hook_source = '''
+source $XDG_CONFIG_HOME/dein/rc/fzf.rc.vim
+'''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'

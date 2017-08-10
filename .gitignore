@@ -56,3 +56,4 @@ build-iPhoneSimulator/
 .config/hub
 /.config/pgcli
 shell/export.local.sh
+.pryrc
