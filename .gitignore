@@ -57,3 +57,5 @@ build-iPhoneSimulator/
 /.config/pgcli
 shell/export.local.sh
 .pryrc
+.envrc
+/.config/direnv/allow
