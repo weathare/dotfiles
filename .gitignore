@@ -59,3 +59,4 @@ shell/export.local.sh
 .pryrc
 .envrc
 /.config/direnv/allow
+/.config/gocode
