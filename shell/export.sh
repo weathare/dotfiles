@@ -12,6 +12,8 @@ eval "$(anyenv init -)"
 # golang
 export GOPATH="$HOME/workspace"
 export PATH="$GOPATH/bin:$HOME/.linuxbrew/opt/go/libexec/bin:$PATH"
+# glide
+[ -f $GOPATH/bin/glide ] && export GO15VENDOREXPERIMENT=1
 
 # rust
 source $HOME/.cargo/env
