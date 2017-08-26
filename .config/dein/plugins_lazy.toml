@@ -92,6 +92,11 @@ on_ft = 'go'
 depends = 'deoplete.nvim'
 
 [[plugins]]
+repo = 'pmsorhaindo/syntastic-local-eslint.vim'
+depends = 'syntastic'
+on_ft = ['javascript', 'javascript.jsx']
+
+[[plugins]]
 repo = 'scrooloose/syntastic'
 if = '!has("nvim")'
 hook_add = '''
@@ -107,6 +112,7 @@ let g:syntastic_mode_map = {
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_css_checkers = ['stylint']
 let g:syntastic_stylus_checkers = ['stylint']
+let g:syntastic_javascript_checkers=['eslint']
 nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>st :SyntasticToggleMode<CR>
 '''
@@ -177,10 +183,21 @@ repo = 'stephenway/postcss.vim'
 on_ft = 'css'
 
 [[plugins]]
+repo = 'neoclide/tern-neovim'
+
+[[plugins]]
 repo = 'carlitux/deoplete-ternjs'
-on_ft = ['javascript', 'javascript.jsx']
 build = 'npm install -g tern'
 depends = 'deoplete.nvim'
+on_ft = [
+  'jsx',
+  'javascript.jsx',
+  'vue'
+]
+hook_source = '''
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--presistent"]
+'''
 
 [[plugins]]
 repo = 'othree/yajs.vim'
@@ -192,6 +209,7 @@ on_ft = ['javascript', 'javascript.jsx']
 hook_source = '''
 let g:vim_jsx_pretty_enable_jsx_highlight = 1
 autocmd BufNewFile,BufRead *.jsx setlocal filetype=javascript.jsx
+autocmd BufNewFile,BufRead vue setlocal filetype=javascript.jsx
 '''
 
 [[plugins]]
@@ -226,4 +244,12 @@ on_ft = [
   'scss',
   'sass',
   'dockerfile'
+]
+
+[[plugins]]
+repo = 'fszymanski/deoplete-emoji'
+on_ft = [
+  'markdown',
+  'gitcommit',
+  'text'
 ]
