@@ -41,5 +41,5 @@ export FZF_DEFAULT_OPTS="
   --color info:183,prompt:110,spinner:107,pointer:167,marker:215
 "
 
-# direnv
-[ -f $GOPATH/bin/direnv ] && eval "$(direnv hook bash)"
+# added by travis gem
+[ -f /home/weathare/.travis/travis.sh ] && source /home/weathare/.travis/travis.sh
