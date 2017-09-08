@@ -15,6 +15,7 @@ alias h='history'
 alias tmux='tmux -2'
 alias nv='nvim'
 alias gti='git'
+alias cat='ccat'
 
 # This one is to take care of make
 # Give me a nice, distinguishable make output
