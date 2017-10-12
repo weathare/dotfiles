@@ -78,3 +78,5 @@ function! LightLineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
+command! DeleteAnsi %s/\[[0-9;]*m//g
+autocmd BufNewFile,BufRead *.log silent! :DeleteAnsi
