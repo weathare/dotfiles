@@ -13,7 +13,7 @@ call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>')
 
 if executable('rg')
   call denite#custom#var('file_rec', 'command',
-        \ ['rg', '--files', '--glob', '!.git'])
+        \ ['rg', '--files', '--hidden', '--glob', '!.git'])
   call denite#custom#var('grep', 'command', ['rg'])
   call denite#custom#var('grep', 'default_opts',
         \ ['--vimgrep', '--no-heading'])
